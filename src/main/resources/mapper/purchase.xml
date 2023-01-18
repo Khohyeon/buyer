@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="shop.mtcoding.buyer.model.PurchaseRepository">
+
+    <select id="findAll" resultType="shop.mtcoding.buyer.model.Product">
+      select * from product_tb
+    </select>
+
+
+    <insert id="insert">
+          insert into purchase (int qty) values (#{qty})
+    </insert>
+
+
 </mapper>

@@ -21,4 +21,13 @@
    <update id="updateById">
       update product_tb set name = #{name}, price = #{price}, qty = #{qty} where id = #{id}
    </update>
+
+   <update id="updateByQty">
+      update product_tb set qty = qty - #{qty} where id = #{id}
+   </update>
+
+    <select id="findByQty" resultType="shop.mtcoding.buyer.model.Product">
+      select * from product_tb where qty = #{qty}
+    </select>
+
 </mapper>
