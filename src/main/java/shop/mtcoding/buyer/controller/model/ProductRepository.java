@@ -10,7 +10,7 @@ public interface ProductRepository {
     public int insert(String name, int price, int qty);
 
     // Read
-    public List<Product> firnAll();
+    public List<Product> findAll();
 
     public Product findById();
 

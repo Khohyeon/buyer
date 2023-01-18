@@ -4,9 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserController {
+public class ProductController {
 
-    // @GetMapping("/")
-    // public Stirng
+    @GetMapping({ "/", "/product" })
+    public String home() {
+        return "product/list";
+    }
 
 }
