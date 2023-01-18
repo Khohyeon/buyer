@@ -1,4 +1,4 @@
-package shop.mtcoding.buyer.controller.model;
+package shop.mtcoding.buyer.model;
 
 import java.sql.Timestamp;
 
@@ -7,10 +7,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Product {
+public class Purchase {
     private Integer id;
-    private String name;
-    private Integer price;
-    private Integer qty;
+    private Integer userId;
+    private Integer productId;
     private Timestamp createdAt;
 }

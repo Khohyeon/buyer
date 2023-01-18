@@ -18,9 +18,9 @@ spring:
   sql:
     init:
       schema-locations:
-      - classpath:db/table.sql
+      - classpath:mydb/table.sql
       data-locations:
-      - classpath:db/data.sql
+      - classpath:mydb/data.sql
   h2:
     console:
       enabled: true

@@ -1,4 +1,4 @@
-package shop.mtcoding.buyer.controller.model;
+package shop.mtcoding.buyer.model;
 
 import java.util.List;
 
