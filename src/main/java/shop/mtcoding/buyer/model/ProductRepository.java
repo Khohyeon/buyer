@@ -12,7 +12,7 @@ public interface ProductRepository {
     // Read
     public List<Product> findAll();
 
-    public Product findById();
+    public Product findById(int id);
 
     // Update
     public int updateById(int id, String name, int price, int qty);
