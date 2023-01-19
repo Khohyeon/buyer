@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PurchaseRepository {
     // Create
-    public int insert(int userId, int productId);
+    public int insert(int qty);
 
     // Read
     public List<Purchase> firnAll();
@@ -19,4 +19,6 @@ public interface PurchaseRepository {
 
     // Delete
     public int deleteById(int id);
+
+    public List<Product> findAll();
 }

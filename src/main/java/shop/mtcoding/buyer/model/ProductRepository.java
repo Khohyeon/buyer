@@ -14,6 +14,8 @@ public interface ProductRepository {
 
     public Product findById(int id);
 
+    public int findByQty(int qty);
+
     // Update
     public int updateById(int id, String name, int price, int qty);
 
