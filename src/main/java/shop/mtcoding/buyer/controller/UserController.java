@@ -21,6 +21,12 @@ public class UserController {
     @Autowired
     private HttpSession session;
 
+    @GetMapping("/logout")
+    public String logout() {
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @GetMapping("/joinForm")
     public String joinForm() {
         return "user/joinForm";
@@ -58,7 +64,7 @@ public class UserController {
         } else {
             // 요청헤더 : Cookie
             // 응답헤더 : Set-Cookie
-            if (remember != null) {
+            if (remember == null) {
                 remember = "";
             }
             if (remember.equals("on")) {

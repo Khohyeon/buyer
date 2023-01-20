@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import shop.mtcoding.buyer.dto.PurchaseAllDto;
+
 @Mapper
 public interface PurchaseRepository {
     // Create
@@ -21,5 +23,7 @@ public interface PurchaseRepository {
 
     // Delete
     public int deleteById(int id);
+
+    public List<PurchaseAllDto> findByUserId(int id);
 
 }

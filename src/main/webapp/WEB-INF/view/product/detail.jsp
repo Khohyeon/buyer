@@ -14,11 +14,12 @@
             <tr>
                 <td>${product.id}</td>
                 <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.qty}</td>
+                <td>${product.price}원</td>
+                <td>${product.qty}개</td>
                 <td>${product.createdAt}</td>
             </tr>
         </table>
+        <c:if test="${principal != null}" >
         <form action="/purchase/insert" method="post">
             <input type="hidden" name="productId" value="${product.id}">
             <select name="count">
@@ -28,6 +29,7 @@
             </select>
             <button type="submit">구매</button>
         </form>
+        </c:if>
 
 
         <%@ include file="../layout/footer.jsp" %>
