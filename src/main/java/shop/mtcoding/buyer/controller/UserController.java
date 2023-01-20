@@ -1,5 +1,8 @@
 package shop.mtcoding.buyer.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +37,43 @@ public class UserController {
     }
 
     @GetMapping("/loginForm")
-    public String loingForm() {
+    public String loingForm(HttpServletRequest request) {
+        String username = "";
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("remember")) {
+                username = cookie.getValue();
+            }
+        }
+        request.setAttribute("remember", username);
+        System.out.println("디버그 : " + username);
         return "/user/loginForm";
     }
 
     @PostMapping("/login")
-    public String login(String username, String password) {
+    public String login(String username, String password, String remember, HttpServletResponse response) {
         User user = userRepository.findByUsernameAndPassword(username, password);
         if (user == null) {
             return "redirect:/loginForm";
         } else {
-            session.setAttribute("principal", user); // pricipal이 나오면 인증이 된것이다.
+            // 요청헤더 : Cookie
+            // 응답헤더 : Set-Cookie
+            if (remember != null) {
+                remember = "";
+            }
+            if (remember.equals("on")) {
+                Cookie cookie = new Cookie("remember", username);
+                response.addCookie(cookie);
+            } else {
+                Cookie cookie = new Cookie("remember", "");
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+
+            }
+            session.setAttribute("principal", user);
             return "redirect:/";
         }
+
     }
 
 }

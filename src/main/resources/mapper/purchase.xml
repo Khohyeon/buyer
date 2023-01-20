@@ -3,13 +3,10 @@
 
 <mapper namespace="shop.mtcoding.buyer.model.PurchaseRepository">
 
-    <select id="findAll" resultType="shop.mtcoding.buyer.model.Product">
-      select * from product_tb
-    </select>
-
 
     <insert id="insert">
-          insert into purchase (int qty) values (#{qty})
+          insert into purchase_tb(user_id, product_id,count, created_at) values(#{userId}, #{productId}, #{count}, now())
+
     </insert>
 
 
